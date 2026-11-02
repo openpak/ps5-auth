@@ -1,0 +1,18 @@
+[Unit]
+Description=OpenPak PS5 auth (ps5-auth): ca.account.sony.com OAuth2
+
+[Container]
+ContainerName=openpak-ps5-auth
+Image=ghcr.io/openpak/ps5-auth:latest
+AutoUpdate=registry
+Network=openpak.network
+# Traefik routes Host(ca.account.sony.com), Host(auth.api.sonyentertainmentnetwork.com) and
+# Host(np.ac.playstation.net) to :8080. Add IP= with pin-ips.sh --apply when deploying.
+EnvironmentFile=/etc/openpak/ps5-auth.env
+Environment=PS5_ADDR=:8080
+
+[Service]
+Restart=always
+
+[Install]
+WantedBy=default.target
