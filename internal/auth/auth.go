@@ -202,4 +202,3 @@ func (s *Server) info(w http.ResponseWriter, r *http.Request) {
 		"expires_in": cl.Expires - s.Now().Unix(),
 	})
 }
-
