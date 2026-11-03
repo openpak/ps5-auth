@@ -45,9 +45,22 @@ func main() {
 		}
 	} else {
 		mem := accountcore.NewMemory()
-		// Dev only: PS5_DEV_ACCOUNT=email:password:accountId
-		if p := strings.SplitN(os.Getenv("PS5_DEV_ACCOUNT"), ":", 3); len(p) == 3 {
+		// Dev only: PS5_DEV_ACCOUNT=email:password:accountId[:onlineId]
+		if p := strings.SplitN(os.Getenv("PS5_DEV_ACCOUNT"), ":", 4); len(p) >= 3 {
 			mem.AddAccount(p[0], p[1], p[2], accountcore.StatusActive)
+			if len(p) == 4 {
+				ctx := context.Background()
+				l, err := mem.ReserveLink(ctx, p[2], accountcore.Namespace, p[2], "")
+				if err == nil {
+					_, err = mem.ActivateLink(ctx, l.LinkID, "")
+				}
+				if err == nil {
+					err = mem.SetLinkPublicCode(ctx, l.LinkID, p[3], "")
+				}
+				if err != nil {
+					log.Error("dev account link", "err", err)
+				}
+			}
 		}
 		core = mem
 		log.Warn("PS5_ACCOUNT_CORE_URL unset: in-memory accounts (development)")

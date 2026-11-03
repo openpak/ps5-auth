@@ -22,7 +22,7 @@ OpenPak's PlayStation 5 Auth Server.
 ## Run
 
 ```sh
-PS5_TOKEN_KEY=$(head -c 32 /dev/urandom | base64) PS5_DEV_ACCOUNT=a@b.c:pw:1001 go run ./cmd/ps5-auth
+PS5_TOKEN_KEY=$(head -c 32 /dev/urandom | base64) PS5_DEV_ACCOUNT=a@b.c:pw:1001:player1 go run ./cmd/ps5-auth
 ```
 
 ## Docs

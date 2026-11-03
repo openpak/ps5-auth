@@ -25,7 +25,7 @@ Basic client credentials are accepted and never checked. Errors on the token end
   `{active, token_type, scope, account_id, online_id, expires_in}`; `{"active": false}` for anything invalid. This
   path is a guess at "token info"; the research doc lists no introspection endpoint.
 - `online_id` is the `PublicCode` of the account's active link in namespace `ps5`, empty if none.
-- Without `PS5_ACCOUNT_CORE_URL` an in-memory core is used (`PS5_DEV_ACCOUNT=email:password:accountId`).
+- Without `PS5_ACCOUNT_CORE_URL` an in-memory core is used (`PS5_DEV_ACCOUNT=email:password:accountId[:onlineId]`; the online id becomes the active `ps5` link public code).
 
 ## Unknown
 
