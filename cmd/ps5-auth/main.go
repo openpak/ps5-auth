@@ -43,6 +43,9 @@ func main() {
 			log.Error("account core", "err", err)
 			os.Exit(2)
 		}
+	} else if !config.DevMemory(os.Getenv) {
+		log.Error("PS5_ACCOUNT_CORE_URL and PS5_ACCOUNT_CORE_TOKEN are required (PS5_DEV_MEMORY=1 only for local development)")
+		os.Exit(2)
 	} else {
 		mem := accountcore.NewMemory()
 		// Dev only: PS5_DEV_ACCOUNT=email:password:accountId[:onlineId]
@@ -63,7 +66,7 @@ func main() {
 			}
 		}
 		core = mem
-		log.Warn("PS5_ACCOUNT_CORE_URL unset: in-memory accounts (development)")
+		log.Warn("PS5_DEV_MEMORY=1: in-memory accounts, lost on restart (development only)")
 	}
 	s := &auth.Server{Signer: sg, Core: core, Log: log}
 	srv := &http.Server{Addr: cfg.Addr, Handler: httpx.Logger(log, s.Handler()), ReadHeaderTimeout: 10 * time.Second}
