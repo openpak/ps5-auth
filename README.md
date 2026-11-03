@@ -5,7 +5,7 @@ OpenPak's PlayStation 5 Auth Server.
 | | |
 | --- | --- |
 | Network | PlayStation 5 |
-| Role | OAuth2 authorize/token surface of `ca.account.sony.com` (aliases `auth.api.sonyentertainmentnetwork.com`, `np.ac.playstation.net`, unverified) |
+| Role | OAuth2 authorize/token surface of `ca.account.sony.com` (aliases `auth.api.sonyentertainmentnetwork.com`, unverified). `auth.api.np.ac.playstation.net` and `csla.np.community.playstation.net` are PS3/PS4 hosts served by `np-account`, not by this service. |
 | Used by | PlayStation app clients, tools using psn-api / PSNAWP; console device sign-in is not yet known |
 | Image | `ghcr.io/openpak/ps5-auth` |
 | Licence | AGPL-3.0-only |

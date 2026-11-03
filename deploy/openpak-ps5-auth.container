@@ -7,7 +7,7 @@ Image=ghcr.io/openpak/ps5-auth:latest
 AutoUpdate=registry
 Network=openpak.network
 # Traefik routes Host(ca.account.sony.com), Host(auth.api.sonyentertainmentnetwork.com) and
-# Host(np.ac.playstation.net) to :8080. Add IP= with pin-ips.sh --apply when deploying.
+# (np.ac hosts belong to np-account.) Add IP= with pin-ips.sh --apply when deploying.
 EnvironmentFile=/etc/openpak/ps5.env
 Environment=PS5_ADDR=:8080
 

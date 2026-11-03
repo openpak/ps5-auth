@@ -1,7 +1,7 @@
 # Protocol: ps5-auth
 
 Replaces `ca.account.sony.com` (and, as unverified aliases, `auth.api.sonyentertainmentnetwork.com`,
-`np.ac.playstation.net`). Sourced from psn-api (`src/authenticate`) and PSNAWP (`authenticator.py`).
+`np.ac.playstation.net` is NOT ours: `auth.api.np.ac` and `csla` are served by np-account for PS3/PS4). Sourced from psn-api (`src/authenticate`) and PSNAWP (`authenticator.py`).
 
 ## Sourced
 
